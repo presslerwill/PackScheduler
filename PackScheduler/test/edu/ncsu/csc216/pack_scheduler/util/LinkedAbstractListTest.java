@@ -165,4 +165,28 @@ public class LinkedAbstractListTest {
 		assertThrows(IndexOutOfBoundsException.class, () -> array.remove(-1)); 
 		assertThrows(IndexOutOfBoundsException.class, () -> array.remove(3));
 	}
+	
+	/**
+	 * Tests the setCapacity method
+	 */
+	@Test
+	void testSetCapacity() {
+		LinkedAbstractList<String> array = new LinkedAbstractList<String>(4);
+		
+		array.add("String1");
+		array.add("String2");
+		array.add("String3");
+		array.add("String4");
+		
+		assertThrows(IllegalArgumentException.class, () -> array.add("String5"));
+		
+		array.setCapacity(6);
+		
+		array.add("String5");
+		array.add("String6");
+		
+		assertThrows(IllegalArgumentException.class, () -> array.add("String7"));
+		
+		assertThrows(IllegalArgumentException.class, () -> array.setCapacity(2));
+	}
 }
