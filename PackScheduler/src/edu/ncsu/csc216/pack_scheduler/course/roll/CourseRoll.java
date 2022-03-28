@@ -64,7 +64,8 @@ public class CourseRoll {
 		if (enrollmentCap < roll.size()) {
 			throw new IllegalArgumentException("Invalid enrollment cap");
 		}
-
+		
+		roll.setCapacity(enrollmentCap);
 		this.enrollmentCap = enrollmentCap;
 	}
 
