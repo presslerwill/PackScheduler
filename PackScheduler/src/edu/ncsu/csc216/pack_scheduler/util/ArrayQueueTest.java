@@ -6,16 +6,16 @@ import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.Test;
 
-class ArrayQueueTest {
+class ArrayQueueTest<E> {
 	@Test
 	void testArrayQueue() {
-		ArrayQueue aq1 = new ArrayQueue(10);
+		ArrayQueue<E> aq1 = new ArrayQueue(10);
 		aq1.enqueue(0);
 	}
 
 	@Test
 	void testEnqueue() {
-		ArrayQueue aq1 = new ArrayQueue(3);
+		ArrayQueue<E> aq1 = new ArrayQueue<E>(3);
 		aq1.enqueue(0);
 		aq1.enqueue(1);
 		aq1.enqueue(2);
@@ -24,7 +24,7 @@ class ArrayQueueTest {
 
 	@Test
 	void testDequeue() {
-		ArrayQueue aq1 = new ArrayQueue(10);
+		ArrayQueue<E> aq1 = new ArrayQueue<E>(10);
 		aq1.enqueue(0);
 		aq1.enqueue(1);
 		aq1.enqueue(2);
