@@ -10,13 +10,14 @@ class LinkedQueueTest {
 	
 	@Test
 	void testLinkedQueue() {
-		LinkedQueue aq1 = new LinkedQueue(10);
+		LinkedQueue<Integer> aq1 = new LinkedQueue<Integer>(10);
 		aq1.enqueue(0);
+		assertFalse(aq1.isEmpty());
 	}
 	
 	@Test
 	void testEnqueue() {
-		LinkedQueue aq1 = new LinkedQueue(3);
+		LinkedQueue<Integer> aq1 = new LinkedQueue<Integer>(3);
 		aq1.enqueue(0);
 		aq1.enqueue(1);
 		aq1.enqueue(2);
@@ -25,7 +26,7 @@ class LinkedQueueTest {
 
 	@Test
 	void testDequeue() {
-		LinkedQueue aq1 = new LinkedQueue(10);
+		LinkedQueue<Integer> aq1 = new LinkedQueue<Integer>(10);
 		aq1.enqueue(0);
 		aq1.enqueue(1);
 		aq1.enqueue(2);
@@ -41,7 +42,7 @@ class LinkedQueueTest {
 
 	@Test
 	void testIsEmpty() {
-		LinkedQueue aq1 = new LinkedQueue(10);
+		LinkedQueue<Integer> aq1 = new LinkedQueue<Integer>(10);
 		assertTrue(aq1.isEmpty());
 		aq1.enqueue(0);
 		assertFalse(aq1.isEmpty());
@@ -49,7 +50,7 @@ class LinkedQueueTest {
 
 	@Test
 	void testSize() {
-		LinkedQueue aq1 = new LinkedQueue(10);
+		LinkedQueue<Integer> aq1 = new LinkedQueue<Integer>(10);
 		assertEquals(0, aq1.size());
 		aq1.enqueue(0);
 		aq1.enqueue(1);
@@ -59,7 +60,7 @@ class LinkedQueueTest {
 
 	@Test
 	void testSetCapacity() {
-		LinkedQueue aq1 = new LinkedQueue(10);
+		LinkedQueue<Integer> aq1 = new LinkedQueue<Integer>(10);
 		aq1.enqueue(0);
 		aq1.enqueue(1);
 		aq1.enqueue(2);

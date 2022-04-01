@@ -9,13 +9,14 @@ import org.junit.jupiter.api.Test;
 class ArrayQueueTest<E> {
 	@Test
 	void testArrayQueue() {
-		ArrayQueue<E> aq1 = new ArrayQueue(10);
+		ArrayQueue<Integer> aq1 = new ArrayQueue<Integer>(10);
 		aq1.enqueue(0);
+		assertFalse(aq1.isEmpty());
 	}
 
 	@Test
 	void testEnqueue() {
-		ArrayQueue<E> aq1 = new ArrayQueue<E>(3);
+		ArrayQueue<Integer> aq1 = new ArrayQueue<Integer>(3);
 		aq1.enqueue(0);
 		aq1.enqueue(1);
 		aq1.enqueue(2);
@@ -24,7 +25,7 @@ class ArrayQueueTest<E> {
 
 	@Test
 	void testDequeue() {
-		ArrayQueue<E> aq1 = new ArrayQueue<E>(10);
+		ArrayQueue<Integer> aq1 = new ArrayQueue<Integer>(10);
 		aq1.enqueue(0);
 		aq1.enqueue(1);
 		aq1.enqueue(2);
@@ -40,7 +41,7 @@ class ArrayQueueTest<E> {
 
 	@Test
 	void testIsEmpty() {
-		ArrayQueue aq1 = new ArrayQueue(10);
+		ArrayQueue<Integer> aq1 = new ArrayQueue<Integer>(10);
 		assertTrue(aq1.isEmpty());
 		aq1.enqueue(0);
 		assertFalse(aq1.isEmpty());
@@ -48,7 +49,7 @@ class ArrayQueueTest<E> {
 
 	@Test
 	void testSize() {
-		ArrayQueue aq1 = new ArrayQueue(10);
+		ArrayQueue<Integer> aq1 = new ArrayQueue<Integer>(10);
 		assertEquals(0, aq1.size());
 		aq1.enqueue(0);
 		aq1.enqueue(1);
@@ -58,7 +59,7 @@ class ArrayQueueTest<E> {
 
 	@Test
 	void testSetCapacity() {
-		ArrayQueue aq1 = new ArrayQueue(10);
+		ArrayQueue<Integer> aq1 = new ArrayQueue<Integer>(10);
 		aq1.enqueue(0);
 		aq1.enqueue(1);
 		aq1.enqueue(2);

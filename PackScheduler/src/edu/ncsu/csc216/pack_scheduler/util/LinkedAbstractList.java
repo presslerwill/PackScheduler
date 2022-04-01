@@ -208,10 +208,12 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	public int size() {
 		return size;
 	}
-	
+
 	/**
 	 * Sets the capacity of the LinkedList
+	 * 
 	 * @param capacity value of the capacity
+	 * @throws IllegalArgumentException if the capacity parameter is invalid
 	 */
 	public void setCapacity(int capacity) {
 		if (capacity < 0 || capacity < this.size) {
