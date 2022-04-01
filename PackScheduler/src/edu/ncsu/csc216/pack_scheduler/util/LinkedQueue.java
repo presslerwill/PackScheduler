@@ -52,7 +52,6 @@ public class LinkedQueue<E> implements Queue<E> {
 		}
 		return linkedList.remove(0);
 	}
-
 	/**
 	 * returns whether the given queue is or isn't empty
 	 * 
@@ -60,7 +59,7 @@ public class LinkedQueue<E> implements Queue<E> {
 	 */
 	@Override
 	public boolean isEmpty() {
-		return (size() == 0);
+		return size() == 0;
 	}
 
 	/**

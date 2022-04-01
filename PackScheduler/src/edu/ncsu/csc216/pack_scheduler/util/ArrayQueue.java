@@ -68,7 +68,7 @@ public class ArrayQueue<E> implements Queue<E> {
 	 */
 	@Override
 	public boolean isEmpty() {
-		return (size() == 0);
+		return size() == 0;
 	}
 
 	/**
