@@ -331,7 +331,7 @@ public class Course extends Activity implements Comparable<Course> {
 		// placed the code to check for invalid parameters in each of the setter methods
 		// and calls the setter methods from the constructor
 		super(title, meetingDays, startTime, endTime);
-		roll = new CourseRoll(enrollmentCap);
+		roll = new CourseRoll(this, enrollmentCap);
 		validator = new CourseNameValidator();
 		setName(name);
 		setSection(section);
