@@ -65,7 +65,7 @@ public class LinkedQueue<E> implements Queue<E> {
 	/**
 	 * gets the size of the queue
 	 * 
-	 * @return the number of elemenets in the queue
+	 * @return the number of elements in the queue
 	 */
 	@Override
 	public int size() {
