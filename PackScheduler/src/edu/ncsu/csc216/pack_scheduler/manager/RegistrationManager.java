@@ -198,11 +198,11 @@ public class RegistrationManager {
 		}
 		try {
 			Student s = (Student) currentUser;
-			Schedule schedule = s.getSchedule();
+//			Schedule schedule = s.getSchedule();
 			CourseRoll roll = c.getCourseRoll();
 
 			if (s.canAdd(c) && roll.canEnroll(s)) {
-				schedule.addCourseToSchedule(c);
+//				schedule.addCourseToSchedule(c);
 				roll.enroll(s);
 				return true;
 			}
