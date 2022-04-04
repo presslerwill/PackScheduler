@@ -8,6 +8,6 @@
 
 - LinkedAbstractList Optimization | **Owner:** Will Pressler, **Due:** 4/1/22, **Status:** Pending
 
-- Waitlist Functionality | **Owner:** Jason Wong, **Due:** 4/2/22, **Status:** Pending
+- Waitlist Functionality | **Owner:** Jason Wong, **Due:** 4/2/22, **Status:** Done
 
 - Deployment Checklist | Owner: Will Pressler, Due: 4/2/22, Status: Pending
