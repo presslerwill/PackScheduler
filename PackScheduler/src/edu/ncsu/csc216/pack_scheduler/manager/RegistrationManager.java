@@ -202,7 +202,7 @@ public class RegistrationManager {
 			CourseRoll roll = c.getCourseRoll();
 
 			if (s.canAdd(c) && roll.canEnroll(s)) {
-				schedule.addCourseToSchedule(c);
+//				schedule.addCourseToSchedule(c);
 				roll.enroll(s);
 				return true;
 			}
