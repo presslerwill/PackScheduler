@@ -49,8 +49,7 @@ class LinkedListTest {
 		assertThrows(NullPointerException.class, () -> array.add(0, null));
 
 		array.add(0, "String");
-
-		array.add(1, "String");
+		assertEquals("String", array.get(0));
 		assertThrows(IllegalArgumentException.class, () -> array.add(1, "String"));
 
 		array.add(1, "String2");

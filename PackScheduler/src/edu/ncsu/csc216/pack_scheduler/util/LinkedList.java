@@ -43,8 +43,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 		if (contains(element)) {
 			throw new IllegalArgumentException();
 		}
-		ListIterator<E> toAddIterator = new LinkedListIterator(index);
-		toAddIterator.add(element);
+		super.add(index, element);
 	}
 
 	@Override
@@ -118,8 +117,8 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			}
 			previous = current;
 			next = current.next;
-			previousIndex = index - 1;
-			nextIndex = index;
+			previousIndex = index;
+			nextIndex = index + 1;
 			lastRetrieved = null;
 		}
 
@@ -184,7 +183,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			if (e == null) {
 				throw new NullPointerException();
 			}
-			ListNode toAdd = new ListNode(e, next, previous);
+			ListNode toAdd = new ListNode(e, previous, next);
 			previous.next = toAdd;
 			next.prev = toAdd;
 			previous = toAdd;
