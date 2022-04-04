@@ -1,5 +1,7 @@
 package edu.ncsu.csc216.pack_scheduler.util;
 
+import java.util.EmptyStackException;
+
 /**
  * This class implements a linked list-based stack. This stack has
  * methods to push, pop, get the size, get if the stack is currently
@@ -38,11 +40,12 @@ public class LinkedStack<E> implements Stack<E> {
      * Implements Stack's pop() method to remove and return the element at the top of the stack
      * 
      * @return the element that was removed
+     * @throws EmptyStackException if the stack is empty
      */
     @Override
     public E pop() {
         if (stack.isEmpty()) {
-            return null;
+            throw new EmptyStackException();
         }
         return stack.remove(0);
     }
