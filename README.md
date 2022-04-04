@@ -4,7 +4,7 @@
 
 ## Lab 9
 
-- Finished the Queues | **Owner:** Helen O'Connell, **Due:** 4/1/22, **Status:** Done(will check once project builds on jenkins though)
+- Finished the Queues | **Owner:** Helen O'Connell, **Due:** 4/1/22, **Status:** Done
 
 - LinkedAbstractList Optimization | **Owner:** Will Pressler, **Due:** 4/1/22, **Status:** Pending
 
