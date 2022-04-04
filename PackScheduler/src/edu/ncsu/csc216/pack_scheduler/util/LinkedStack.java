@@ -41,6 +41,9 @@ public class LinkedStack<E> implements Stack<E> {
      */
     @Override
     public E pop() {
+        if (stack.isEmpty()) {
+            return null;
+        }
         return stack.remove(0);
     }
 
