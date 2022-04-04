@@ -8,7 +8,7 @@ import java.util.EmptyStackException;
 /**
  * Stack list with an Array based implementation
  * @author Will Pressler
- * @param <E>
+ * @param <E> element type for the Stack
  *
  */
 public class ArrayStack<E> implements Stack<E> {

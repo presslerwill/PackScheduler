@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  * and check if the queue is empty.
  * 
  * @author Helen O'Connell
- * @param <E>
+ * @param <E> the element type for the Queue
  *
  */
 public class LinkedQueue<E> implements Queue<E> {

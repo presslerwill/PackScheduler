@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  * capacity, and check if the queue is empty.
  * 
  * @author Helen O'Connell
- * @param <E>
+ * @param <E> Element type for the Queue
  *
  */
 public class ArrayQueue<E> implements Queue<E> {
