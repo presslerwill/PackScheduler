@@ -35,6 +35,8 @@ public class CourseRoll {
     private LinkedQueue<Student> waitlist;
     /** Constant for the size of waitlist */
     static final int WAITLIST_SIZE = 10;
+    /** Course that this CourseRoll is associated with */
+    private Course course;
 
     /**
      * Creates a roll for a Course
@@ -50,6 +52,7 @@ public class CourseRoll {
         roll = new LinkedAbstractList<Student>(MAX_ENROLLMENT);
         setEnrollmentCap(enrollmentCap);
         waitlist = new LinkedQueue<Student>(WAITLIST_SIZE);
+        course = c;
     }
 
     /**
@@ -106,6 +109,7 @@ public class CourseRoll {
             if (canEnroll(s)) {
                 try {
                     roll.add(s);
+                    s.getSchedule().addCourseToSchedule(course);
                     return;
                 } catch (IllegalArgumentException e) {
                     waitlist.enqueue(s);
@@ -138,7 +142,9 @@ public class CourseRoll {
                 if (roll.get(i).equals(s)) {
                     roll.remove(i);
                     if (!waitlist.isEmpty()) {
-                        roll.add(waitlist.dequeue());
+                        Student nextStudent = waitlist.dequeue();
+                        roll.add(nextStudent);
+                        nextStudent.getSchedule().addCourseToSchedule(course);
                     }
                     return;
                 }
