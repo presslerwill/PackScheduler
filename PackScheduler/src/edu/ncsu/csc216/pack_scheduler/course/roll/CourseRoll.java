@@ -201,11 +201,8 @@ public class CourseRoll {
             updatedWaitlist.enqueue(studentInWaitlist);
         }
         waitlist = updatedWaitlist;
-        if (duplicate) {
-            return false;
-        }
         
-        return true;
+        return !duplicate;
     }
 
     /**
