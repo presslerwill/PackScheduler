@@ -21,6 +21,8 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	int size;
 	/** The total capacity that the list can hold */
 	int capacity;
+	/** The last node in the list */
+	ListNode back;
 
 	/**
 	 * Constructs an empty Abstract Linked List with a given capacity, with the
@@ -31,6 +33,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	 */
 	public LinkedAbstractList(int capacity) {
 		front = null;
+		back = null;
 		size = 0;
 		if (capacity < size) {
 			throw new IllegalArgumentException("Capacity cannot be smaller than size or less than 0");
@@ -88,6 +91,10 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 				before.next = new ListNode(e);
 				size++;
 				return;
+			}
+			// Makes sure back is the final node
+			if (after.next == null) {
+				back = after;
 			}
 			// Sets the newNodes next to the after node
 			ListNode newNode = new ListNode(e, after);
@@ -185,13 +192,21 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 			}
 			// Node that will come after node that is added
 			ListNode after;
-			if (idx == size() - 1) {
+			if (idx == size - 1) {
 				after = null;
 			} else {
 				after = before.next.next;
 			}
+
 			data = before.next.data;
 			before.next = after;
+			// makes sure the final node is back
+			if (after == null) {
+				back = before.next;
+			}
+			else if (after.next == null) {
+				back = after;
+			}
 
 		}
 
