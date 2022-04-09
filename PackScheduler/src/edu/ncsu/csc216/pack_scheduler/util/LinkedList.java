@@ -5,12 +5,17 @@ import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 /**
+ * The LinkedList class implements a list of connected LinkedNodes. It maintains
+ * its front and back nodes as well as its size. It is used by the faculty
+ * directory class to hold a list of faculty, which makes up the directory
+ * object
  * 
  * @author Helen O'Connell
  * @author Jason Wong
  * @author Will Pressler
  *
- * @param <E>
+ * @param <E> generic object that acts as a placeholder for the element type
+ *            held by the LinkedList
  */
 public class LinkedList<E> extends AbstractSequentialList<E> {
 
@@ -49,6 +54,14 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 	@Override
 	public int size() {
 		return size;
+	}
+
+	@Override
+	public E set(int index, E element) {
+		if (contains(element)) {
+			throw new IllegalArgumentException("Duplicate element.");
+		}
+		return super.set(index, element);
 	}
 
 	private class ListNode {
@@ -122,28 +135,55 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			lastRetrieved = null;
 		}
 
+		/**
+		 * returns whether or not there is a next node that is not a dummy node
+		 * 
+		 * @return whether or not there is a next node that is not a dummy node
+		 */
 		@Override
 		public boolean hasNext() {
-			return (next.data != null);
+			return next.data != null;
 		}
 
+		/**
+		 * returns the data of the node that comes next. it also sets the corresponding
+		 * next, and lastRetrieved fields. The next and previous indexes are incremented
+		 * as well
+		 * 
+		 * @return the data of the next element
+		 * @throws NoSuchElementException if there is no non-dummy node available next
+		 */
 		@Override
 		public E next() {
-			if (next.data == null) {
+			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
 			next = next.next;
 			lastRetrieved = next.prev;
-			nextIndex = nextIndex + 1;
-			previousIndex = previousIndex + 1;
+			nextIndex++;
+			previousIndex++;
 			return lastRetrieved.data;
 		}
 
+		/**
+		 * returns whether or not there is a previous node that is not a dummy node
+		 * 
+		 * @return whether or not there is a previous node that is not a dummy node
+		 */
 		@Override
 		public boolean hasPrevious() {
-			return (previous.data != null);
+			return previous.data != null;
 		}
 
+		/**
+		 * returns the data of the node that comes before. it also sets the
+		 * corresponding previous, and lastRetrieved fields. The next and previous
+		 * indexes are decremented as well
+		 * 
+		 * @return the data of the previous element
+		 * @throws NoSuchElementException if there is no non-dummy node available
+		 *                                previous
+		 */
 		@Override
 		public E previous() {
 			if (previous.data == null) {
@@ -151,33 +191,78 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			}
 			previous = previous.prev;
 			lastRetrieved = previous.next;
-			nextIndex = nextIndex - 1;
-			previousIndex = previousIndex - 1;
+			nextIndex--;
+			previousIndex--;
 			return lastRetrieved.data;
 		}
 
+		/**
+		 * returns the index of the next node
+		 * 
+		 * @return the index of the next node
+		 */
 		@Override
 		public int nextIndex() {
 			return nextIndex;
 		}
 
+		/**
+		 * returns the index of the previous node
+		 * 
+		 * @return the index of the previous node
+		 */
 		@Override
 		public int previousIndex() {
 			return previousIndex;
 		}
 
+		/**
+		 * removes the last element set to lastRetrieved, which is done from either a
+		 * call to next or previous. also decrements the size
+		 * 
+		 * @throws IllegalArgumentException if lastRetrieved is null
+		 */
 		@Override
 		public void remove() {
-			// TODO Auto-generated method stub
-
+			if (lastRetrieved == null) {
+				throw new IllegalArgumentException("No last retrieved.");
+			}
+			ListNode placeholder = lastRetrieved;
+			lastRetrieved.prev.next = lastRetrieved.next;
+			placeholder.next.prev = placeholder.prev;
+			lastRetrieved = null;
+			size--;
 		}
 
+		/**
+		 * sets the data of the node last retrieved from a call to next or previous to
+		 * the given element.
+		 * 
+		 * @param e the element to be set
+		 * @throws IllegalArgumentException if there is no recent call to next or
+		 *                                  previous, so the lastRetrieved field is
+		 *                                  empty
+		 * @throws NullPointerException     if the element given is null
+		 */
 		@Override
 		public void set(E e) {
-			// TODO Auto-generated method stub
-
+			if (lastRetrieved == null) {
+				throw new IllegalArgumentException("No last retrieved.");
+			}
+			if (e == null) {
+				throw new NullPointerException("Null element cannot be set.");
+			}
+			lastRetrieved.data = e;
 		}
 
+		/**
+		 * adds the given element to the list where there list Iterator is currently
+		 * positioned. Therefore, the new element would be added between the nodes a
+		 * call to previous and a call to next would return.
+		 * 
+		 * @param e the element to be set
+		 * @throws NullPointerException if the element to be added is empty
+		 */
 		@Override
 		public void add(E e) {
 			if (e == null) {
