@@ -13,6 +13,7 @@ import java.util.Scanner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import edu.ncsu.csc216.pack_scheduler.user.Faculty;
 import edu.ncsu.csc216.pack_scheduler.util.LinkedList;
 /**
  * Tests the FacultyRecordIO class's methods. This class generates valid faculty data strings to be
