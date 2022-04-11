@@ -5,7 +5,7 @@
 
 ## Lab 10
 
-- Finish Linked List | **Owner:** Helen O'Connell, **Due:** 4/8/22, **Status:** Done (check on jenkins later)
+- Finish Linked List | **Owner:** Helen O'Connell, **Due:** 4/8/22, **Status:** Done
 
 - Faculty and FacultyDirecotry | **Owner:** Will Pressler, **Due:** 4/8/22, **Status:** Done
 
