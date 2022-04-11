@@ -45,7 +45,7 @@ public class Faculty extends User {
 	 */
 	public void setMaxCourses(int courses) {
 		if (courses < 1 || courses > 3) {
-			throw new IllegalArgumentException("Invalid max credits");
+			throw new IllegalArgumentException("Invalid max courses");
 		}
 		this.maxCourses = courses;
 	}
