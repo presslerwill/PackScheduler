@@ -58,7 +58,7 @@ class LinkedListTest {
 
 		assertThrows(IndexOutOfBoundsException.class, () -> array.add(-1, "str"));
 		assertThrows(IndexOutOfBoundsException.class, () -> array.add(4, "str"));
-		
+
 		array.add("4");
 		array.add("5");
 		array.add("6");
@@ -81,18 +81,16 @@ class LinkedListTest {
 		array.add("String3");
 
 		array.set(1, "New String");
-		
+
 		array.set(0, "New String2");
-		
+
 		array.set(2, "New String3");
-		
-		assertThrows(IndexOutOfBoundsException.class, () -> array.set(-1, "string")); 
+
+		assertThrows(IndexOutOfBoundsException.class, () -> array.set(-1, "string"));
 		assertThrows(IndexOutOfBoundsException.class, () -> array.set(3, "string"));
-		
-		assertThrows(NullPointerException.class, () -> array.set(0, null)); 
 
-
-
+		assertThrows(NullPointerException.class, () -> array.set(0, null));
+		assertThrows(IllegalArgumentException.class, () -> array.set(0, "New String"));
 	}
 
 	/**
@@ -104,25 +102,31 @@ class LinkedListTest {
 		array.add("String1");
 		array.add("String2");
 		array.add("String3");
-		
+
 		String ret = array.remove(2);
 		assertEquals("String3", ret);
-		assertEquals(2, array.size()); 
-		
-		ret = array.remove(0); 
+		assertEquals(2, array.size());
+
+		ret = array.remove(0);
 		assertEquals("String1", ret);
 		assertEquals(1, array.size());
-		
+
 		array.add("str1");
 		array.add("str2");
-		
-		ret = array.remove(1); 
+
+		ret = array.remove(1);
 		assertEquals("str1", ret);
 		assertEquals(2, array.size());
-		
-		
-		assertThrows(IndexOutOfBoundsException.class, () -> array.remove(-1)); 
-		assertThrows(IndexOutOfBoundsException.class, () -> array.remove(3));
-			}
 
+		assertThrows(IndexOutOfBoundsException.class, () -> array.remove(-1));
+		assertThrows(IndexOutOfBoundsException.class, () -> array.remove(3));
+	}
+
+	void testIterator() {
+		LinkedList<String> array = new LinkedList<String>();
+		array.add("String1");
+		array.add("String2");
+		array.add("String3");
+	}
+	
 }
