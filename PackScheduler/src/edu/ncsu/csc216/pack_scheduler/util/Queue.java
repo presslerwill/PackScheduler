@@ -38,7 +38,7 @@ public interface Queue<E> {
 	/**
 	 * Returns the number of elements currently in the queue
 	 * 
-	 * @return size of the queue currently
+	 * @return current size of the queue
 	 */
 	int size();
 
