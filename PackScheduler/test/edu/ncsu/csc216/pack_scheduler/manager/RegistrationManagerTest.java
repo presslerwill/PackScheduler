@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import edu.ncsu.csc216.pack_scheduler.catalog.CourseCatalog;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
+import edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory;
 import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 import edu.ncsu.csc216.pack_scheduler.user.User;
@@ -48,6 +49,8 @@ public class RegistrationManagerTest {
 	private User regularUser;
 	/** Directory from the Manager object */
 	private StudentDirectory directory;
+	/** Faculty Directory from the Manager object */
+	private FacultyDirectory fdirectory;
 	/** Registrar user name */
 	private String registrarUsername;
 	/** Registrar password */
@@ -64,6 +67,7 @@ public class RegistrationManagerTest {
 		manager.clearData();
 
 		directory = manager.getStudentDirectory();
+		fdirectory = manager.getFacultyDirectory();
 		prop = new Properties();
 
 		try {
@@ -126,6 +130,20 @@ public class RegistrationManagerTest {
 		assertEquals(directory, actual, "Method doesn't return the original directory object after reset");
 
 	}
+	
+	/**
+	 * Tests the getFacultyDirectory() method
+	 */
+	@Test
+	public void testGetFacultyDirectory() {
+		FacultyDirectory actual1 = manager.getFacultyDirectory();
+		assertEquals(fdirectory, actual1, "Method doesn't return the original directory object");
+		manager.clearData();
+		fdirectory = manager.getFacultyDirectory();
+		actual1 = manager.getFacultyDirectory();
+		assertEquals(fdirectory, actual1, "Method doesn't return the original directory object after reset");
+
+	}
 
 	/**
 	 * Tests the login() method
@@ -152,6 +170,7 @@ public class RegistrationManagerTest {
 		assertThrows(IllegalArgumentException.class, () -> manager.login("efrost", ""));
 		assertThrows(IllegalArgumentException.class, () -> manager.login("efrost", S_PASSWORD));
 
+		
 	}
 
 	/**

@@ -11,7 +11,9 @@ import java.util.Properties;
 import edu.ncsu.csc216.pack_scheduler.catalog.CourseCatalog;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
 import edu.ncsu.csc216.pack_scheduler.course.roll.CourseRoll;
+import edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory;
 import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
+import edu.ncsu.csc216.pack_scheduler.user.Faculty;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 import edu.ncsu.csc216.pack_scheduler.user.User;
 import edu.ncsu.csc216.pack_scheduler.user.schedule.Schedule;
@@ -42,6 +44,8 @@ public class RegistrationManager {
 	private User registrar;
 	/** The current User of the registration manager */
 	private User currentUser;
+	/** the faculty directory */
+	private FacultyDirectory facultyDirectory;
 	/** Hashing algorithm */
 	private static final String HASH_ALGORITHM = "SHA-256";
 	/** The file with registrar properties */
@@ -54,6 +58,7 @@ public class RegistrationManager {
 		createRegistrar();
 		this.studentDirectory = new StudentDirectory();
 		this.courseCatalog = new CourseCatalog();
+		this.facultyDirectory = new FacultyDirectory();
 	}
 
 	/**
@@ -124,6 +129,15 @@ public class RegistrationManager {
 	}
 
 	/**
+	 * Gets the faculty directory of students
+	 * 
+	 * @return Faculty Directory of students
+	 */
+	public FacultyDirectory getFacultyDirectory() {
+		return this.facultyDirectory;
+	}
+
+	/**
 	 * Logs into the registration manager
 	 * 
 	 * @param id       the id of the user
@@ -136,6 +150,7 @@ public class RegistrationManager {
 	public boolean login(String id, String password) {
 		String localHashPW = hashPW(password);
 		Student s = studentDirectory.getStudentById(id);
+		Faculty f = facultyDirectory.getFacultyById(id);
 		if (currentUser != null) {
 			return false;
 		}
@@ -143,8 +158,7 @@ public class RegistrationManager {
 			if (registrar.getPassword().equals(localHashPW)) {
 				currentUser = registrar;
 				return true;
-			}
-			else {
+			} else {
 				return false;
 			}
 
@@ -152,13 +166,20 @@ public class RegistrationManager {
 
 		// student login
 
-		if (s == null) {
+		if (s == null && f == null) {
 			throw new IllegalArgumentException("User doesn't exist.");
-		} else if (s.getPassword().equals(localHashPW)) {
+		} 
+		if (s != null && s.getPassword().equals(localHashPW)) {
 			currentUser = s;
 			return true;
 		}
+		if (f != null && f.getPassword().equals(localHashPW)) {
+			currentUser = f;
+			return true;
+		}
 
+		// faculty login
+		
 		return false;
 	}
 
@@ -184,6 +205,7 @@ public class RegistrationManager {
 	public void clearData() {
 		courseCatalog.newCourseCatalog();
 		studentDirectory.newStudentDirectory();
+		facultyDirectory.newFacultyDirectory();
 	}
 
 	/**
