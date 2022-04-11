@@ -159,6 +159,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 				throw new NoSuchElementException();
 			}
 			next = next.next;
+			previous = next.prev;
 			lastRetrieved = next.prev;
 			nextIndex++;
 			previousIndex++;
@@ -190,6 +191,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 				throw new NoSuchElementException();
 			}
 			previous = previous.prev;
+			next = previous.next;
 			lastRetrieved = previous.next;
 			nextIndex--;
 			previousIndex--;
@@ -225,7 +227,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 		@Override
 		public void remove() {
 			if (lastRetrieved == null) {
-				throw new IllegalArgumentException("No last retrieved.");
+				throw new IllegalStateException("No last retrieved.");
 			}
 			ListNode placeholder = lastRetrieved;
 			lastRetrieved.prev.next = lastRetrieved.next;
@@ -247,7 +249,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 		@Override
 		public void set(E e) {
 			if (lastRetrieved == null) {
-				throw new IllegalArgumentException("No last retrieved.");
+				throw new IllegalStateException("No last retrieved.");
 			}
 			if (e == null) {
 				throw new NullPointerException("Null element cannot be set.");
