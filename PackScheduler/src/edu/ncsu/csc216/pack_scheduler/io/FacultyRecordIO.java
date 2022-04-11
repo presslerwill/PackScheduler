@@ -109,7 +109,7 @@ public class FacultyRecordIO {
 	 * 
 	 * @param line of text from input file
 	 * @return Faculty object with correct parameters from file
-	 * @throws IllegalArgumentException if the line is not able to be processed
+	 * @throws IllegalArgumentException if the line is not able to be processed due to too many tokens
 	 */
 	private static Faculty processFaculty(String line) {
 		try {
