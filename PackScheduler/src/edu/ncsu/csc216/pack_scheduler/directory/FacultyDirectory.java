@@ -97,6 +97,8 @@ public class FacultyDirectory {
 		Faculty faculty = null;
 		if (maxCourses >= Faculty.MIN_COURSES && maxCourses <= Faculty.MAX_COURSES) {
 			faculty = new Faculty(firstName, lastName, id, email, hashPW, maxCourses);
+		} else {
+		    throw new IllegalArgumentException("Invalid max courses");
 		}
 
 		for (int i = 0; i < facultyDirectory.size(); i++) {
