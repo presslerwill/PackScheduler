@@ -9,7 +9,7 @@
 
 - Faculty and FacultyDirecotry | **Owner:** Will Pressler, **Due:** 4/8/22, **Status:** Done
 
-- FacultyRecordIO | **Owner:** Jason Wong, **Due:** 4/8/22, **Status:** Pending
+- FacultyRecordIO | **Owner:** Jason Wong, **Due:** 4/8/22, **Status:** Done
 
 - RegistrationManager and Checklist | **Owner:** Helen O'Connell, **Due:** 4/9/22, **Status:** Pending
 
