@@ -44,11 +44,11 @@ public interface Stack<E> {
 	int size();
 
 	/**
-	 * Sets the stack's capacity
+	 * Sets the stack's capacity after performing a check on the capacity parameter
 	 * 
 	 * @param capacity desired capacity of the stack
-	 * @throws IllegalArgumentException if the parameter is negative or less than the
-	 *                                  number of elements in the stack
+	 * @throws IllegalArgumentException if the parameter is negative or less than
+	 *                                  the number of elements in the stack
 	 */
 	void setCapacity(int capacity);
 }

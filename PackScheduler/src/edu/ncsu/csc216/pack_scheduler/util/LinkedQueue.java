@@ -44,6 +44,7 @@ public class LinkedQueue<E> implements Queue<E> {
 	 * Removes from the queue by removing from the front of the LinkedList
 	 * 
 	 * @return the removed object
+	 * @throws NoSuchElementException if the queue is empty
 	 */
 	@Override
 	public E dequeue() {

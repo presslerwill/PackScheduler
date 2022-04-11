@@ -29,7 +29,7 @@ public interface Queue<E> {
 	E dequeue();
 
 	/**
-	 * returns whether the queue is or isn't empty
+	 * returns whether the queue is(true) or isn't empty(false)
 	 * 
 	 * @return whether the queue is or isn't empty
 	 */
@@ -43,7 +43,8 @@ public interface Queue<E> {
 	int size();
 
 	/**
-	 * sets the capacity of the given queue
+	 * sets the capacity of the given queue after checking the capacity parameter to
+	 * be set is not less than size or negative
 	 * 
 	 * @param capacity of the queue to be set to
 	 * @throws IllegalArgumentException if the capacity parameter is negative or if
