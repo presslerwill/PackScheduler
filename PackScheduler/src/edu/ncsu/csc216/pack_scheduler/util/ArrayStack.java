@@ -69,10 +69,7 @@ public class ArrayStack<E> implements Stack<E> {
 	 */
 	@Override
 	public boolean isEmpty() {
-		if (stack.size() == 0) {
-			return true;
-		}
-		return false;
+		return stack.size() == 0;
 	}
 
 	/**
