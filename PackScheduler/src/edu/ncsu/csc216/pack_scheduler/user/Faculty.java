@@ -3,6 +3,8 @@
  */
 package edu.ncsu.csc216.pack_scheduler.user;
 
+import edu.ncsu.csc216.pack_scheduler.user.schedule.FacultySchedule;
+
 /**
  * Creates a class for the Faculty object and has fields of firstName, lastName,
  * id, email, password, and maxCourses. Alongside constants MIN_COURSES and
@@ -22,6 +24,8 @@ public class Faculty extends User {
 	public static final int MIN_COURSES = 1;
 	/** Maximum number of courses a faculty member can teach in a semester */
 	public static final int MAX_COURSES = 3;
+	/** schedule associated with the Faculty object */
+	private FacultySchedule schedule;
 
 	/**
 	 * Constructs a Faculty object
@@ -35,6 +39,7 @@ public class Faculty extends User {
 	 */
 	public Faculty(String firstName, String lastName, String id, String email, String password, int maxCourses) {
 		super(firstName, lastName, id, email, password);
+		schedule = new FacultySchedule(id);
 		setMaxCourses(maxCourses);
 	}
 
@@ -74,7 +79,7 @@ public class Faculty extends User {
 
 	/**
 	 * Changes the equals method to compare the objects used in the program and
-	 * properly determine their equivalency
+	 * properly determine their equivalence
 	 * 
 	 * @return boolean value of if objects are equivalent
 	 */
@@ -95,6 +100,26 @@ public class Faculty extends User {
 		if (getClass() != faculty.getClass())
 			return false;
 		return !(maxCourses != faculty.maxCourses);
+	}
+
+	/**
+	 * returns the schedule associated with the current instance of faculty
+	 * 
+	 * @return the schedule of the faculty member
+	 */
+	public FacultySchedule getSchedule() {
+		return schedule;
+	}
+
+	/**
+	 * returns whether the faculty's schedule has more classes than their maximum
+	 * number of classes allowed
+	 * 
+	 * @return whether the schedule of the faculty member is greater than their max
+	 *         number allowed
+	 */
+	public boolean isOverloaded() {
+		return schedule.getNumScheduledCourses() > MAX_COURSES;
 	}
 
 	/**
