@@ -130,7 +130,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			}
 			previous = current;
 			next = current.next;
-			previousIndex = index;
+			previousIndex = index - 1;
 			nextIndex = index + 1;
 			lastRetrieved = null;
 		}
@@ -232,7 +232,6 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			ListNode placeholder = lastRetrieved;
 			lastRetrieved.prev.next = lastRetrieved.next;
 			placeholder.next.prev = placeholder.prev;
-			previous();
 			lastRetrieved = null;
 			size--;
 		}
@@ -275,7 +274,6 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			previous.next = toAdd;
 			next.prev = toAdd;
 			previous = toAdd;
-			previousIndex++;
 			nextIndex++;
 			size++;
 			lastRetrieved = null;

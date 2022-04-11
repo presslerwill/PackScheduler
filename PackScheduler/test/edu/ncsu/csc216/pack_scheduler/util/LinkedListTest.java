@@ -121,11 +121,20 @@ class LinkedListTest {
 		assertThrows(IndexOutOfBoundsException.class, () -> array.remove(3));
 	}
 
-	void testIterator() {
+	@Test
+	void testGetIndex() {
 		LinkedList<String> array = new LinkedList<String>();
-		array.add("String1");
-		array.add("String2");
-		array.add("String3");
+		array.add("orange");
+		array.add("banana");
+		array.add("apple");
+		array.add("kiwi");
+		
+		assertEquals(0, array.indexOf("orange"));
+		assertEquals(1, array.indexOf("banana"));
+		assertEquals(2, array.indexOf("apple"));
+		assertEquals(3, array.indexOf("kiwi"));
+		
+		
 	}
 	
 }
