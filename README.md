@@ -2,6 +2,14 @@
 
 # CSC 217-204 Team #6
 
+## Lab 11
+
+- Update Course and CourseRecordIO | **Owner:** Team, **Due:** Finish next lab time, **Status:** Pending
+
+- Update Registration Manager | **Owner:** Team, **Due:** Finish next lab time, **Status:** Pending
+
+- Deployment Checklist | **Owner:** Team, **Due:** Finish next lab time, **Status:** Pending
+
 
 ## Lab 10
 
