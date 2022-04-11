@@ -134,7 +134,7 @@ class LinkedListTest {
 		assertEquals(2, array.indexOf("apple"));
 		assertEquals(3, array.indexOf("kiwi"));
 		
-		
+		assertEquals(0, array.lastIndexOf("orange"));
 	}
 	
 }

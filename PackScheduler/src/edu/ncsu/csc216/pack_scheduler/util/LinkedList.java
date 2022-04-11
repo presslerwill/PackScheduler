@@ -131,7 +131,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
 			previous = current;
 			next = current.next;
 			previousIndex = index - 1;
-			nextIndex = index + 1;
+			nextIndex = index;
 			lastRetrieved = null;
 		}
 
