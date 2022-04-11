@@ -44,8 +44,8 @@ public class FacultyRecordIOTest {
 	private String validFaculty7 = "Lacey,Walls,lwalls,nascetur.ridiculus.mus@fermentum.net,pw,2";
 
 	/** Constructs a String array of all the valid faculty data strings */
-	private String[] validFaculty = { validFaculty3, validFaculty6, validFaculty4, validFaculty5, validFaculty2,
-			validFaculty0, validFaculty1, validFaculty7 };
+	private String[] validFaculty = { validFaculty0, validFaculty1, validFaculty2, validFaculty3, validFaculty4,
+			validFaculty5, validFaculty6, validFaculty7 };
 
 	/** hashPW field that holds the hashed PassWord value */
 	private String hashPW;
@@ -79,7 +79,7 @@ public class FacultyRecordIOTest {
 	public void testReadFacultyRecords() {
 		try {
 			LinkedList<Faculty> faculty = FacultyRecordIO.readFacultyRecords("test-files/faculty_records.txt");
-			assertEquals(10, faculty.size());
+			assertEquals(8, faculty.size());
 
 			for (int i = 0; i < validFaculty.length; i++) {
 				assertEquals(validFaculty[i], faculty.get(i).toString());
@@ -113,8 +113,9 @@ public class FacultyRecordIOTest {
 	public void testWriteFacultyRecords() {
 		LinkedList<Faculty> faculty = new LinkedList<Faculty>();
 		//Only add one faculty member because that's all the output in expected_faculty_records.txt
-		faculty.add(new Faculty("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 2)); // TODO
-		
+		faculty.add(new Faculty("Ashely", "Witt", "awitt", "mollis@Fuscealiquetmagna.net", hashPW, 2));
+		faculty.add(new Faculty("Fiona", "Meadows", "fmeadow", "pharetra.sed@et.org", hashPW, 3));
+		faculty.add(new Faculty("Brent", "Brewer", "bbrewer", "sem.semper@orcisem.co.uk", hashPW, 1));
 		try {
 			FacultyRecordIO.writeFacultyRecords("test-files/actual_faculty_records.txt", faculty);
 			checkFiles("test-files/expected_faculty_records.txt", "test-files/actual_faculty_records.txt");
@@ -129,7 +130,9 @@ public class FacultyRecordIOTest {
 	@Test
 	public void testWriteFacultyRecordsNoPermissions() {
 		LinkedList<Faculty> faculty = new LinkedList<Faculty>();
-		faculty.add(new Faculty("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 2)); // TODO
+		faculty.add(new Faculty("Ashely", "Witt", "awitt", "mollis@Fuscealiquetmagna.net", hashPW, 2));
+		faculty.add(new Faculty("Fiona", "Meadows", "fmeadow", "pharetra.sed@et.org", hashPW, 3));
+		faculty.add(new Faculty("Brent", "Brewer", "bbrewer", "sem.semper@orcisem.co.uk", hashPW, 1));
 
 		Exception exception = assertThrows(IOException.class,
 				() -> FacultyRecordIO.writeFacultyRecords("/home/sesmith5/actual_faculty_records.txt", faculty));
