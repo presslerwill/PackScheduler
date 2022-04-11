@@ -85,7 +85,7 @@ public class LinkedListRecursiveTest {
 		assertThrows(NullPointerException.class, () -> array.add(0, null));
 
 		array.add(0, "String");
-//		assertEquals("String", array.get(0));
+		assertEquals("String", array.get(0));
 		assertThrows(IllegalArgumentException.class, () -> array.add(1, "String"));
 
 		array.add(1, "String2");
@@ -104,6 +104,16 @@ public class LinkedListRecursiveTest {
 		array.add("10");
 		array.add("11");
 		assertEquals(11, array.size());
+		assertEquals("String3", array.get(1));
+		assertEquals("String2", array.get(2));
+		assertEquals("4", array.get(3));
+		assertEquals("5", array.get(4));
+		assertEquals("6", array.get(5));
+		assertEquals("7", array.get(6));
+		assertEquals("8", array.get(7));
+		assertEquals("9", array.get(8));
+		assertEquals("10", array.get(9));
+		assertEquals("11", array.get(10));
 	}
 
 	/**
@@ -158,7 +168,25 @@ public class LinkedListRecursiveTest {
 		assertThrows(IndexOutOfBoundsException.class, () -> array.remove(3));
 	}
 
-
+	/**
+	 * Test method for LinkedListRecursive.remove(E e)
+	 */
+	@Test
+	void testRemoveE() {
+		LinkedListRecursive<String> array = new LinkedListRecursive<String>();
+		assertThrows(NullPointerException.class, () -> array.remove(null));
+		assertFalse(array.remove("asdf"));
+		
+		array.add("String1");
+		array.add("String2");
+		array.add("String3");
+		assertEquals(3, array.size());
+	
+		assertTrue(array.remove("String2"));
+		assertFalse(array.remove("qwerty"));
+		assertTrue(array.remove("String3"));
+		assertTrue(array.remove("String1"));
+	}
 	
 
 }
