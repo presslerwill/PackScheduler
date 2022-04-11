@@ -11,7 +11,7 @@
 
 - FacultyRecordIO | **Owner:** Jason Wong, **Due:** 4/8/22, **Status:** Done
 
-- RegistrationManager and Checklist | **Owner:** Helen O'Connell, **Due:** 4/9/22, **Status:** Pending
+- RegistrationManager and Checklist | **Owner:** Helen O'Connell, **Due:** 4/9/22, **Status:** Done
 
 
 ## Lab 9
