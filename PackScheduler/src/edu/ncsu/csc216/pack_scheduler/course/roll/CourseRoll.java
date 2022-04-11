@@ -43,6 +43,7 @@ public class CourseRoll {
      *
      * @param c             Course that this CourseRoll is associated with
      * @param enrollmentCap the enrollment cap for the Course
+     * @throws IllegalArgumentException if the course is null
      */
     public CourseRoll(Course c, int enrollmentCap) {
         if (c == null) {
