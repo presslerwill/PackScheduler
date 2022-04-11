@@ -113,7 +113,7 @@ public class FacultyRecordIOTest {
 	public void testWriteFacultyRecords() {
 		LinkedList<Faculty> faculty = new LinkedList<Faculty>();
 		//Only add one faculty member because that's all the output in expected_faculty_records.txt
-		faculty.add(new Faculty("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 15)); // TODO
+		faculty.add(new Faculty("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 2)); // TODO
 		
 		try {
 			FacultyRecordIO.writeFacultyRecords("test-files/actual_faculty_records.txt", faculty);
@@ -129,7 +129,7 @@ public class FacultyRecordIOTest {
 	@Test
 	public void testWriteFacultyRecordsNoPermissions() {
 		LinkedList<Faculty> faculty = new LinkedList<Faculty>();
-		faculty.add(new Faculty("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 15)); // TODO
+		faculty.add(new Faculty("Zahir", "King", "zking", "orci.Donec@ametmassaQuisque.com", hashPW, 2)); // TODO
 
 		Exception exception = assertThrows(IOException.class,
 				() -> FacultyRecordIO.writeFacultyRecords("/home/sesmith5/actual_faculty_records.txt", faculty));
