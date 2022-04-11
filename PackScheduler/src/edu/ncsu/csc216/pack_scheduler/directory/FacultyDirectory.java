@@ -105,7 +105,12 @@ public class FacultyDirectory {
 				return false;
 			}
 		}
-		return facultyDirectory.add(faculty);
+		
+		try {
+		    return facultyDirectory.add(faculty);
+		} catch (NullPointerException e) {
+		    return false;
+		}
 	}
 
 	/**
