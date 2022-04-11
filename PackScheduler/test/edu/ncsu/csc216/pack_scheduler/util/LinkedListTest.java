@@ -9,8 +9,7 @@ import edu.ncsu.csc216.pack_scheduler.course.Course;
 class LinkedListTest {
 
 	/**
-	 * Test method for
-	 * {@link edu.ncsu.csc216.pack_scheduler.util.ArrayList#ArrayList()}.
+	 * Test method for LinkedList's constructor
 	 */
 	@Test
 	void testConstructor() {
@@ -22,7 +21,7 @@ class LinkedListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.pack_scheduler.util.ArrayList#size()}.
+	 * Test method for LinkedList.size()
 	 */
 	@Test
 	void testSize() {
@@ -41,7 +40,7 @@ class LinkedListTest {
 	}
 
 	/**
-	 * Test method for {@link java.util.AbstractList#add(int, java.lang.Object)}.
+	 * Test method for LinkedList.add()
 	 */
 	@Test
 	void testAddIntE() {
@@ -71,7 +70,7 @@ class LinkedListTest {
 	}
 
 	/**
-	 * Test method for {@link java.util.AbstractList#set(int, java.lang.Object)}.
+	 * Test method for LinkedList.set()
 	 */
 	@Test
 	void testSet() {
@@ -94,7 +93,7 @@ class LinkedListTest {
 	}
 
 	/**
-	 * Test method for {@link java.util.AbstractList#remove(int)}.
+	 * Test method for LinkedList.remove()
 	 */
 	@Test
 	void testRemoveInt() {
