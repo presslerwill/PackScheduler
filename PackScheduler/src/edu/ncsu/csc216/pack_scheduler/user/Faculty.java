@@ -119,7 +119,7 @@ public class Faculty extends User {
 	 *         number allowed
 	 */
 	public boolean isOverloaded() {
-		return schedule.getNumScheduledCourses() > MAX_COURSES;
+		return schedule.getNumScheduledCourses() > maxCourses;
 	}
 
 	/**

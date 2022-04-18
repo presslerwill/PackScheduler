@@ -100,12 +100,12 @@ public class LinkedListRecursive<E>  {
 	
 	/**
 	 * Removes an element from the given index
-	 * @param E element to remove
+	 * @param e element to remove
 	 * @return boolean true if the removal was successful
 	 */
 	public boolean remove(E e) {
 	    if (e == null) {
-	        throw new NullPointerException("Element is null");
+	        return false;
 	    }
 	    
 	    if (isEmpty()) {

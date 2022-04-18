@@ -17,6 +17,7 @@ import edu.ncsu.csc216.pack_scheduler.catalog.CourseCatalog;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
 import edu.ncsu.csc216.pack_scheduler.directory.FacultyDirectory;
 import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
+import edu.ncsu.csc216.pack_scheduler.user.Faculty;
 import edu.ncsu.csc216.pack_scheduler.user.Student;
 import edu.ncsu.csc216.pack_scheduler.user.User;
 import edu.ncsu.csc216.pack_scheduler.user.schedule.Schedule;
@@ -494,6 +495,56 @@ public class RegistrationManagerTest {
 		
 		manager.logout();
 	}
+	
+	/**
+	 * Tests the addFacultyToCourse method
+	 */
+	@Test
+	public void testAddFaculty() {
+		directory = manager.getStudentDirectory();
+		directory.loadStudentsFromFile("test-files/student_records.txt");
+		
+		CourseCatalog catalog = manager.getCourseCatalog();
+		catalog.loadCoursesFromFile("test-files/course_records.txt");
+		
+		manager.login(registrarUsername, registrarPassword);
+		
+		Course c = catalog.getCourseFromCatalog("CSC216", "001");
+		fdirectory = manager.getFacultyDirectory();
+		Faculty f = new Faculty("Bob", "Jones", "bjones", "bjones@ncsu.edu", "pw", 3);
+		fdirectory.addFaculty("Bob", "Jones", "bjones", "bjones@ncsu.edu", "pw", "pw", 3);
+		
+		assertNull(c.getInstructorId());
+		manager.addFacultyToCourse(c, f);
+		assertEquals("bjones", c.getInstructorId());
+	}
+	
+	/**
+	 * Tests the removeFacultyFromCourse method
+	 */
+	@Test
+	public void testRemoveFaculty() {
+		directory = manager.getStudentDirectory();
+		directory.loadStudentsFromFile("test-files/student_records.txt");
+		
+		CourseCatalog catalog = manager.getCourseCatalog();
+		catalog.loadCoursesFromFile("test-files/course_records.txt");
+		
+		manager.login(registrarUsername, registrarPassword);
+		
+		Course c = catalog.getCourseFromCatalog("CSC216", "001");
+		fdirectory = manager.getFacultyDirectory();
+		Faculty f = new Faculty("Bob", "Jones", "bjones", "bjones@ncsu.edu", "pw", 3);
+		fdirectory.addFaculty("Bob", "Jones", "bjones", "bjones@ncsu.edu", "pw", "pw", 3);
+		
+		assertNull(c.getInstructorId());
+		manager.addFacultyToCourse(c, f);
+		assertEquals("bjones", c.getInstructorId());
+		
+		manager.removeFacultyFromCourse(c, f);
+		assertNull(c.getInstructorId());
+	}
+	
 
 	/**
 	 * Returns an encoded password.

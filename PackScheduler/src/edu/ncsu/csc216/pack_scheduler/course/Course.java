@@ -169,7 +169,7 @@ public class Course extends Activity implements Comparable<Course> {
 	 */
 	public void setInstructorId(String instructorId) {
 		// conducts the test to see if instructorId is null or an empty string
-		if (instructorId == null || instructorId.length() == 0) {
+		if (instructorId != null && instructorId.length() == 0) {
 			throw new IllegalArgumentException("Invalid instructor id.");
 		}
 

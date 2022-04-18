@@ -275,6 +275,45 @@ public class RegistrationManager {
 			// do nothing
 		}
 	}
+	
+	/**
+	 * Adds a Faculty to the course
+	 * @param course to be added
+	 * @param f faculty member added to the course
+	 * @return true if the addition was successful
+	 */
+	public boolean addFacultyToCourse(Course course, Faculty f) {
+		if (currentUser != null && currentUser == registrar) {
+			f.getSchedule().addCourseToSchedule(course);
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Removes a Faculty from the course
+	 * @param course to be removed
+	 * @param f faculty to be removed
+	 * @return true if the removal was successful
+	 */
+	public boolean removeFacultyFromCourse(Course course, Faculty f) {
+		if (currentUser != null && currentUser == registrar) {
+			f.getSchedule().removeCourseFromSchedule(course);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Resets the schedule of the given faculty
+	 * @param f faculty whose schedule will be reset
+	 */
+	public void resetFacultySchedule(Faculty f) {
+		if (currentUser != null && currentUser == registrar) {
+			f.getSchedule().resetSchedule();
+		}
+	}
 
 	/**
 	 * The inner class of the Registrar within the User, creates the Registrar as a

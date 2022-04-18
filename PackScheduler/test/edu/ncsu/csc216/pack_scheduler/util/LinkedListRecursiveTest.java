@@ -174,7 +174,7 @@ public class LinkedListRecursiveTest {
 	@Test
 	void testRemoveE() {
 		LinkedListRecursive<String> array = new LinkedListRecursive<String>();
-		assertThrows(NullPointerException.class, () -> array.remove(null));
+		assertFalse(array.remove(null));
 		assertFalse(array.remove("asdf"));
 		
 		array.add("String1");
