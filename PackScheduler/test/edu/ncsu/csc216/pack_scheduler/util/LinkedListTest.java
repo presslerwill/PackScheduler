@@ -136,5 +136,4 @@ class LinkedListTest {
 		
 		assertEquals(0, array.lastIndexOf("orange"));
 	}
-	
 }

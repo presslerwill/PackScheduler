@@ -96,6 +96,7 @@ public class RegistrationManagerTest {
 			throw new IllegalArgumentException("Cannot process properties file.");
 		}
 
+		manager.logout();
 	}
 
 	/**
@@ -507,7 +508,7 @@ public class RegistrationManagerTest {
 		CourseCatalog catalog = manager.getCourseCatalog();
 		catalog.loadCoursesFromFile("test-files/course_records.txt");
 		
-		manager.login(registrarUsername, registrarPassword);
+		assertTrue(manager.login(registrarUsername, registrarPassword));
 		
 		Course c = catalog.getCourseFromCatalog("CSC216", "001");
 		fdirectory = manager.getFacultyDirectory();
@@ -515,7 +516,7 @@ public class RegistrationManagerTest {
 		fdirectory.addFaculty("Bob", "Jones", "bjones", "bjones@ncsu.edu", "pw", "pw", 3);
 		
 		assertNull(c.getInstructorId());
-		manager.addFacultyToCourse(c, f);
+		assertTrue(manager.addFacultyToCourse(c, f));
 		assertEquals("bjones", c.getInstructorId());
 	}
 	
