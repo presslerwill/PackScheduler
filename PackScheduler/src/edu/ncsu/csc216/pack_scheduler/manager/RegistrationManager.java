@@ -149,8 +149,7 @@ public class RegistrationManager {
 	 */
 	public boolean login(String id, String password) {
 		String localHashPW = hashPW(password);
-		Student s = studentDirectory.getStudentById(id);
-		Faculty f = facultyDirectory.getFacultyById(id);
+		
 		if (currentUser != null) {
 			return false;
 		}
@@ -165,20 +164,27 @@ public class RegistrationManager {
 		}
 
 		// student login
-
-		if (s == null && f == null) {
-			throw new IllegalArgumentException("User doesn't exist.");
-		} 
-		if (s != null && s.getPassword().equals(localHashPW)) {
+		Student s = studentDirectory.getStudentById(id);
+		
+		if (s == null) {
+			// faculty login
+			Faculty f = facultyDirectory.getFacultyById(id);
+			if (f == null) {
+				throw new IllegalArgumentException("User doesn't exist.");
+			}
+			else if (f.getPassword().equals(localHashPW)) {
+				currentUser = f;
+				return true;
+			}
+		}
+		
+		else if (s.getPassword().equals(localHashPW)) {
 			currentUser = s;
 			return true;
 		}
-		if (f != null && f.getPassword().equals(localHashPW)) {
-			currentUser = f;
-			return true;
-		}
+		
 
-		// faculty login
+		// return false if everything failed
 		
 		return false;
 	}
@@ -215,24 +221,25 @@ public class RegistrationManager {
 	 * @return true if enrolled
 	 */
 	public boolean enrollStudentInCourse(Course c) {
-		if (!(currentUser instanceof Student)) {
-			throw new IllegalArgumentException("Illegal Action");
-		}
-		try {
-			Student s = (Student) currentUser;
-//			Schedule schedule = s.getSchedule();
-			CourseRoll roll = c.getCourseRoll();
+	    if (currentUser == null || !(currentUser instanceof Student)) {
+	        throw new IllegalArgumentException("Illegal Action");
+	    }
+	    try {
+	        Student s = (Student)currentUser;
+	        Schedule schedule = s.getSchedule();
+	        CourseRoll roll = c.getCourseRoll();
+	        
+	        if (s.canAdd(c) && roll.canEnroll(s)) {
+	            schedule.addCourseToSchedule(c);
+	            roll.enroll(s);
+	            return true;
+	        }
+	        
+	    } catch (IllegalArgumentException e) {
+	        return false;
+	    }
+	    return false;
 
-			if (s.canAdd(c) && roll.canEnroll(s)) {
-//				schedule.addCourseToSchedule(c);
-				roll.enroll(s);
-				return true;
-			}
-
-		} catch (IllegalArgumentException e) {
-			return false;
-		}
-		return false;
 	}
 
 	/**
