@@ -459,17 +459,18 @@ public class RegistrationManagerTest {
 		}
 		manager.logout();
 		
-		manager.login("efrost", "pw");
-		assertTrue(manager.enrollStudentInCourse(catalog.getCourseFromCatalog("CSC216", "001")), "Action: enroll\nUser: efrost\nCourse: CSC216-001\nResults: True - Student max credits are 3 and course has 3.");
-		assertFalse(manager.enrollStudentInCourse(catalog.getCourseFromCatalog("CSC217", "211")), "Action: enroll\nUser: efrost\nCourse: CSC216-001 then CSC 217-211\nResults: False - Student max credits are 3 and additional credit of CSC217-211 cannot be added, will exceed max credits.");
+		manager.login("cschwartz", "pw");
+		assertTrue(manager.enrollStudentInCourse(catalog.getCourseFromCatalog("CSC216", "001")), "Action: enroll\nUser: cschwartz\nCourse: CSC216-001\nResults: True - Student max credits are 4 and course has 3.");
+		assertFalse(manager.enrollStudentInCourse(catalog.getCourseFromCatalog("CSC226", "001")), "Action: enroll\nUser: cschwartz\nCourse: CSC216-001 then CSC 226-001\nResults: False - Student max credits are 4 and additional 2 credits of CSC226-001 cannot be added, will exceed max credits.");
 		
 		manager.resetSchedule();
 		//Check Student Schedule
-		Student efrost = directory.getStudentById("efrost");
-		Schedule scheduleFrost = efrost.getSchedule();
-		assertEquals(0, scheduleFrost.getScheduleCredits(), "User: efrost\nCourse: CSC226-001, then schedule reset\n");
-		String[][] scheduleFrostArray = scheduleFrost.getScheduledCourses();
-		assertEquals(0, scheduleFrostArray.length, "User: efrost\nCourse: CSC226-001, then schedule reset\n");
+		Student cschwartz = directory.getStudentById("cschwartz");
+		Schedule scheduleSchwartz = cschwartz.getSchedule();
+		assertEquals(0, scheduleSchwartz.getScheduleCredits(), "User: cschwartz\nCourse: CSC226-001, then schedule reset\n");
+		String[][] scheduleSchwartzArray = scheduleSchwartz.getScheduledCourses();
+		assertEquals(0, scheduleSchwartzArray.length, "User: cschwartz\nCourse: CSC226-001, then schedule reset\n");
+		assertEquals(10, catalog.getCourseFromCatalog("CSC216", "001").getCourseRoll().getOpenSeats(), "Course should have all seats available after reset.");
 		assertEquals(10, catalog.getCourseFromCatalog("CSC226", "001").getCourseRoll().getOpenSeats(), "Course should have all seats available after reset.");
 		
 		manager.logout();

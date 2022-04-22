@@ -110,11 +110,11 @@ public class CourseRoll {
             if (canEnroll(s)) {
                 try {
                     roll.add(s);
-                    s.getSchedule().addCourseToSchedule(course);
-                    return;
                 } catch (IllegalArgumentException e) {
                     waitlist.enqueue(s);
+                    return;
                 }
+                s.getSchedule().addCourseToSchedule(course);
             } else {
                 throw new IllegalArgumentException();
             }

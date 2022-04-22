@@ -230,7 +230,7 @@ public class RegistrationManager {
 	        CourseRoll roll = c.getCourseRoll();
 	        
 	        if (s.canAdd(c) && roll.canEnroll(s)) {
-	            schedule.addCourseToSchedule(c);
+//	            schedule.addCourseToSchedule(c);
 	            roll.enroll(s);
 	            return true;
 	        }
@@ -280,6 +280,8 @@ public class RegistrationManager {
 			schedule.resetSchedule();
 		} catch (IllegalArgumentException e) {
 			// do nothing
+			System.out.println("test");
+
 		}
 	}
 	
