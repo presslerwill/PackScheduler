@@ -319,7 +319,10 @@ public class RegistrationManager {
 	 * @param f faculty whose schedule will be reset
 	 */
 	public void resetFacultySchedule(Faculty f) {
-		if (currentUser != null && currentUser == registrar) {
+		if (currentUser != null) {
+			if (currentUser != registrar) {
+				throw new IllegalArgumentException();
+			}
 			f.getSchedule().resetSchedule();
 		}
 	}
