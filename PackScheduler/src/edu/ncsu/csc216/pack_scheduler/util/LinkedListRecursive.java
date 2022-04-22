@@ -76,7 +76,16 @@ public class LinkedListRecursive<E>  {
 		if (e == null) {
 			throw new NullPointerException("Null element");
 		}
+		
+		// Special case: adding to empty list
 		if (isEmpty()) {
+			front = new ListNode(e, front);
+			size++;
+			return;
+		}
+		
+		// Special case: adding to front of list
+		if (idx == 0) {
 			front = new ListNode(e, front);
 			size++;
 			return;

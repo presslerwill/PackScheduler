@@ -114,6 +114,30 @@ public class LinkedListRecursiveTest {
 		assertEquals("9", array.get(8));
 		assertEquals("10", array.get(9));
 		assertEquals("11", array.get(10));
+		
+		// More tests
+		LinkedListRecursive<String> array2 = new LinkedListRecursive<String>();
+		// Out of bounds tests
+		assertThrows(IndexOutOfBoundsException.class, () -> array2.add(-1, "2"));
+		assertThrows(IndexOutOfBoundsException.class, () -> array2.add(1, "2"));
+		
+		// Valid tests
+		// Add to empty list
+		array2.add(0, "2");
+		// Add to end of list
+		array2.add(1, "3");
+		// Add to beginning of list
+		array2.add(0, "0");
+		// Add to middle of list
+		array2.add(1, "1");
+		
+		// Check if everything added correctly
+		assertEquals(4, array2.size());
+		assertEquals("0", array2.get(0));
+		assertEquals("1", array2.get(1));
+		assertEquals("2", array2.get(2));
+		assertEquals("3", array2.get(3));
+
 	}
 
 	/**
