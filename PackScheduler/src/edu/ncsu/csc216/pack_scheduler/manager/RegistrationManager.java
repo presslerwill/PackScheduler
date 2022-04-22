@@ -292,7 +292,10 @@ public class RegistrationManager {
 	 * @return true if the addition was successful
 	 */
 	public boolean addFacultyToCourse(Course course, Faculty f) {
-		if (currentUser != null && currentUser == registrar) {
+		if (currentUser != null) {
+			if (currentUser != registrar) {
+				throw new IllegalArgumentException();
+			}
 			f.getSchedule().addCourseToSchedule(course);
 			return true;
 		}
@@ -306,7 +309,10 @@ public class RegistrationManager {
 	 * @return true if the removal was successful
 	 */
 	public boolean removeFacultyFromCourse(Course course, Faculty f) {
-		if (currentUser != null && currentUser == registrar) {
+		if (currentUser != null) {
+			if (currentUser != registrar) {
+				throw new IllegalArgumentException();
+			}
 			f.getSchedule().removeCourseFromSchedule(course);
 			return true;
 		}
