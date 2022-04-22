@@ -547,6 +547,32 @@ public class RegistrationManagerTest {
 		assertNull(c.getInstructorId());
 	}
 	
+	/**
+	 * Tests the resetFacultySchedule() method in the RegistrationManager class
+	 */
+	@Test
+	void testResetFacultySchedule() {
+		assertTrue(manager.login(registrarUsername, registrarPassword));
+		manager.getFacultyDirectory().addFaculty("Jason", "Wong", "jtwong2", "jtwong2@ncsu.edu", "pw", "pw", 3);
+		Faculty f = manager.getFacultyDirectory().getFacultyById("jtwong2");
+		
+		manager.getCourseCatalog().addCourseToCatalog("CSC216", "Software Development Fundamentals", "001", 3, null, 100, "TH", 1145, 1300);
+		
+		assertTrue(manager.addFacultyToCourse(manager.getCourseCatalog().getCourseFromCatalog("CSC216", "001"), f));
+		assertEquals(1, f.getSchedule().getScheduledCourses().length);
+		assertEquals("CSC216", f.getSchedule().getScheduledCourses()[0][0]);
+		assertEquals("001", f.getSchedule().getScheduledCourses()[0][1]);
+		
+		// Try resetting schedule as non-registrar
+		manager.logout();
+		manager.login("jtwong2", "pw");
+		assertThrows(IllegalArgumentException.class, () -> manager.resetFacultySchedule(f));
+		manager.logout();
+		
+		assertTrue(manager.login(registrarUsername, registrarPassword));
+		assertDoesNotThrow(() -> manager.resetFacultySchedule(f));
+	}
+	
 
 	/**
 	 * Returns an encoded password.
