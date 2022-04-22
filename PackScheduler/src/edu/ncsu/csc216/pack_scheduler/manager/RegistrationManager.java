@@ -221,12 +221,12 @@ public class RegistrationManager {
 	 * @return true if enrolled
 	 */
 	public boolean enrollStudentInCourse(Course c) {
-	    if (currentUser == null || !(currentUser instanceof Student)) {
+	    if (!(currentUser instanceof Student)) {
 	        throw new IllegalArgumentException("Illegal Action");
 	    }
 	    try {
 	        Student s = (Student)currentUser;
-	        Schedule schedule = s.getSchedule();
+//	        Schedule schedule = s.getSchedule();
 	        CourseRoll roll = c.getCourseRoll();
 	        
 	        if (s.canAdd(c) && roll.canEnroll(s)) {
