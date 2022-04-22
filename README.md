@@ -4,11 +4,11 @@
 
 ## Lab 11
 
-- Update Course and CourseRecordIO | **Owner:** Team, **Due:** Finish next lab time, **Status:** Pending
+- Update Course and CourseRecordIO | **Owner:** Team, **Due:** Finish next lab time, **Status:** Done
 
-- Update Registration Manager | **Owner:** Team, **Due:** Finish next lab time, **Status:** Pending
+- Update Registration Manager | **Owner:** Team, **Due:** Finish next lab time, **Status:** Done
 
-- Deployment Checklist | **Owner:** Team, **Due:** Finish next lab time, **Status:** Pending
+- Deployment Checklist | **Owner:** Team, **Due:** Finish next lab time, **Status:** Done
 
 
 ## Lab 10
